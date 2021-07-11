@@ -1,4 +1,4 @@
-import {React , useState} from 'react'
+import React , {useState} from 'react'
 
 import { View, Text , StyleSheet } from 'react-native'
 import { StatusBar } from 'expo-status-bar';
@@ -13,12 +13,14 @@ import tw from 'tailwind-react-native-classnames';
 
 
 const LoginScreen = () => {
-    const [email,setEmail]=useState("")
-    const [password,setPassword]=useState("")
+    
+    const [email,setEmail] = useState("")
+    const [password,setPassword] = useState("")
 
 
 
     return (
+
         <View>
             <StatusBar style="light" />
             
