@@ -18,7 +18,7 @@ const LoginScreen = ({navigation,route}) => {
 
     return (
 
-        <KeyboardAvoidingView behavior="padding" style={styles.container}>
+        <KeyboardAvoidingView behavior="padding" style={styles.twCont}>
             <StatusBar style="light" />
             
             <Image style={{width:200 , height:200, marginBottom:30 }} source={{uri:"https://image.flaticon.com/icons/png/512/3256/3256114.png"}}/>  
@@ -63,5 +63,6 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         padding: 10
-    }
+    },
+    twCont:tw`flex flex-col justify-center items-center`
   });
