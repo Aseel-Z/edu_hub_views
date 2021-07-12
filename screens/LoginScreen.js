@@ -7,7 +7,7 @@ import { KeyboardAvoidingView } from 'react-native';
 
 
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({navigation,route}) => {
 
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
@@ -31,18 +31,18 @@ const LoginScreen = ({navigation}) => {
                 autoFocus 
                 type="email"
                 value={email}
-                onChange={(text)=>{setEmail(text)}}
+                onChangeText={(text)=> {setEmail(text);route.params.setUsername(text);}}
                   /> 
                <Input 
                placeholder="password" 
                secureTextEntry 
                type="password"
                value={password}
-               onChange={(pass)=>{setPassword(pass)}} />  
+               onChangeText={(text)=> {setPassword(text);route.params.setPass(text);}} />  
             </View>
            
             <Button containerStyle={styles.button} onPress={signIn} title="Login" />
-            <Button containerStyle={styles.button} onPress={() => navigation.navigate('Register')} type="outline" title="Register" />
+            <Button containerStyle={styles.button} onPress={() => {navigation.navigate('Register')}} type="outline" title="Register" />
             <View style={{height:30}} />
         </KeyboardAvoidingView>
     )
