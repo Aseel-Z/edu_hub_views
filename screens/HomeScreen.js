@@ -9,6 +9,11 @@ const HomeScreen = ({navigation,route}) => {
     const devHight = Dimensions.get('window').height;
     const devWidth = Dimensions.get('window').width;
     const viewWidth = devWidth > 600? 700 : devWidth
+    const [post,setPost] = useState("")
+
+    const addPost = ()=>{
+
+    }
 
     return (
         <View style={styles.container}>
@@ -22,9 +27,31 @@ const HomeScreen = ({navigation,route}) => {
                     </View>
                 </View>
                 <View style={tw`w-full h-full flex flex-col items-center mt-10`}>
-                    <View style={tw`h-1/4 w-11/12 border rounded-md flex flex-col justify-center`}>
-                        <Image style={{width:100 , height:100}} source={{uri:"https://image.flaticon.com/icons/png/512/3135/3135715.png"}}/>
+                    <View style={tw`h-1/3 w-11/12 bg-blue-300 rounded-lg flex flex-row justify-around `}>
+                        <View style={tw`h-11/12 w-2/6 flex flex-col items-center justify-around `}>
+                            <Image style={styles.img} source={{uri:"https://image.flaticon.com/icons/png/512/3135/3135715.png"}}/>
+                            <View style={tw`h-1/2 w-11/12 bg-blue-200 rounded-lg flex flex-col justify-around items-center`}>
+                                <Text style={styles.text} >Name:</Text>
+                                <Text style={styles.text} >Hisham</Text>
+                                <Text style={styles.text} >Location:</Text>
+                                <Text style={styles.text} >Amman</Text>
+                            </View>
+                        </View>
+                        <View style={tw`h-11/12 w-4/6 flex flex-col items-center justify-around`}>
+                            <Input containerStyle={tw`h-11/12 w-11/12 bg-gray-100 mt-10 rounded-lg`}
+                                placeholder="Post"
+                                autoFocus 
+                                type="text"
+                                value={post}
+                                multiline={true}
+                                onChangeText={(text)=>{setPost(text)}}
+                            />
+                            <Button onPress={addPost}  title="     post     "/>
+                        </View>
                     </View>
+                </View>
+                <View style={tw`w-full h-full flex flex-col items-center mt-10`}>
+
                 </View>
             </View>
         </View>
@@ -32,7 +59,15 @@ const HomeScreen = ({navigation,route}) => {
 }
 
 const styles = StyleSheet.create({
-    container:tw`flex items-center`
+    container:tw`flex items-center`,
+    img:{
+        width:100 , 
+        height:100 ,
+    },
+    text:{
+        fontSize:20,
+        fontWeight:'bold'
+    },
 })
 
 export default HomeScreen
