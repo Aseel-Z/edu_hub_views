@@ -1,6 +1,6 @@
 import axios from 'axios'
-const baseURL = "url"
-const token = "/token-ext/"
+const baseURL = "https://cookie-stand-api-hisham.herokuapp.com"
+const token = "/api/token/"
 
 export async function getToken(username,password){
     const url = baseURL+token

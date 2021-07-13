@@ -5,6 +5,7 @@ import { Input , Button,Image  } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames';
 import { KeyboardAvoidingView } from 'react-native';
 import { Dimensions } from 'react-native';
+import { getToken } from '../services/api';
 
 
 const LoginScreen = ({navigation,route}) => {
@@ -15,7 +16,15 @@ const LoginScreen = ({navigation,route}) => {
     const [password,setPassword] = useState("");
 
     const signIn = () => {
-        navigation.navigate('Home')
+        console.log(email,password)
+        const checkUser = (username,pass) =>{
+            getToken(username,pass).then(response =>{
+                if (response != undefined){
+                    navigation.navigate('Home')
+                }
+            })
+        }
+        checkUser(email,password)
     }
 
     return (
