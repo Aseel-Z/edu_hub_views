@@ -6,17 +6,17 @@ import tw from 'tailwind-react-native-classnames';
 
 
 const HomeScreen = ({navigation,route}) => {
-
     
     const dd={
         image:{uri:'https://image.flaticon.com/icons/png/512/3135/3135715.png'},
-        name:'Person teacher',
+        name:route.params.username,
         specialization:'Math',
         biography:'math teacher with 10 years experience Totally optional short description about yourself, what you do and so on.',
         city:'Amman',
         email:'tree@udu.com',
         mobile:'075692633',
-        post:'kksjah lldldkdjkduuajjsk nnndkkd/n kksjjssooosueje jhhhsjskkdkdl kkkkkkkllffkkhkh kksjah lldldkdjkduuajjsk '
+        post:'kksjah lldldkdjkduuajjsk nnndkkd/n kksjjssooosueje jhhhsjskkdkdl kkkkkkkllffkkhkh kksjah lldldkdjkduuajjsk ',
+        member_type:'educator'
     }
 
     const data = [dd,dd,dd,dd,dd,dd,dd,dd,dd,dd,dd]
@@ -31,10 +31,8 @@ const HomeScreen = ({navigation,route}) => {
         <View key={index} style={tw`w-11/12 flex items-center justify-center flex-wrap my-2 my-0 w-11/12`}>
             <View style={tw`p-2 w-full rounded-l-lg rounded-r-none shadow-2xl bg-white opacity-75 mx-0 flex flex-col mt-5 `}>    
                 <View style={tw`flex flex-row`}>
-                    <View style={tw`flex flex-col mx-2 items-center justify-start`}>
-                        <Image  style={styles.img2} source = {result.image}/>
-                        <Text style={tw`pt-2 text-gray-600 text-sm flex items-center justify-center justify-start`}><Image  style={tw`h-3 w-3`} source = {icons.location}/> {' '} {result.city}</Text>
-                        <Text style={tw`pt-2 text-blue-800 text-sm flex items-center justify-center justify-start`}> {result.specialization}</Text>
+                    <View style={tw`flex flex-col mx-2 items-start justify-start`}>
+                        <Image onPress={()=>{navigation.navigate('Profile',{data:result})}} style={styles.img2} source = {result.image}/>
                     </View>
                     <View style={tw`flex flex-col items-start justify-around`}>
                         <Text style={tw`text-lg font-bold pt-0`}>{result.name}</Text>
@@ -43,7 +41,6 @@ const HomeScreen = ({navigation,route}) => {
                                 <Text style={tw`pt-2 text-blue-800 text-sm flex items-center justify-center justify-start`}> {result.post}</Text>
                             </ScrollView>
                         </View>
-                        <Button containerStyle={tw`w-32 h-8 mb-2`} title="View Profile" />
                     </View>
                 </View>
             </View>
@@ -56,7 +53,11 @@ const HomeScreen = ({navigation,route}) => {
     const [post,setPost] = useState("")
 
     const addPost = ()=>{
+        console.log(post)
+    }
 
+    const refresh = () =>{
+        navigation.navigate('Home')
     }
 
     return (
@@ -64,7 +65,7 @@ const HomeScreen = ({navigation,route}) => {
             <View style={{ width:viewWidth,height:devHight}}>
                 <View style={tw`mt-4 flex flex-col bg-blue-300 items-center pb-2 rounded-lg`}>
                     <View style={tw`w-full flex flex flex-row bg-blue-100 p-2 justify-around items-center border-b mb-3`}>
-                        <Button containerStyle={tw`m-0 bg-gray-100 `} onPress={() => {navigation.navigate('Register')}} type={'outline'}title={'Home'}/>
+                        <Button containerStyle={tw`m-0 bg-gray-100 `} onPress={refresh} type={'outline'}title={'Home'}/>
                         <Button containerStyle={tw`m-0 `} onPress={() => {navigation.navigate('Profile')}} title={'Profile'}/>
                         <Button containerStyle={tw`m-0 `} onPress={() => {navigation.navigate('Search')}} title={'Search'}/>
                         <Button containerStyle={tw`m-0 `} onPress={() => {navigation.navigate('Login')}} title={'Sign Out'}/>
