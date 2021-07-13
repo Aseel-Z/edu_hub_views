@@ -7,7 +7,6 @@ import { KeyboardAvoidingView } from 'react-native';
 import { Image , Linking } from 'react-native';
 
 
-
 const icons ={
     location:{uri:'https://image.flaticon.com/icons/png/512/684/684850.png'},
     email:{uri:'https://image.flaticon.com/icons/png/512/580/580704.png'}, 
