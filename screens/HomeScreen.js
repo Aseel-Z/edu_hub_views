@@ -34,11 +34,11 @@ const HomeScreen = ({navigation,route}) => {
                     <View style={tw`flex flex-col mx-2 items-start justify-start`}>
                         <Image onPress={()=>{navigation.navigate('Profile',{data:result})}} style={styles.img2} source = {result.image}/>
                     </View>
-                    <View style={tw`flex flex-col items-start justify-around`}>
+                    <View style={tw`flex flex-col items-start justify-start`}>
                         <Text style={tw`text-lg font-bold pt-0`}>{result.name}</Text>
                         <View style={tw`w-11/12`} >
                             <ScrollView style={tw`w-11/12 mb-1`}>
-                                <Text style={tw`pt-2 text-blue-800 text-sm flex items-center justify-center justify-start`}> {result.post}</Text>
+                                <Text style={tw`w-4/5 text-blue-800 text-sm flex items-center justify-center justify-start`}> {result.post}</Text>
                             </ScrollView>
                         </View>
                     </View>
@@ -86,7 +86,7 @@ const HomeScreen = ({navigation,route}) => {
                     </View>
                 </View>
                 <View style={tw`w-full h-full flex flex-col items-center mt-5`}>
-                    <View style={tw`h-1/2 w-11/12 bg-blue-300 rounded-lg flex flex-col justify-center items-center  mt-5`}>
+                    <View style={tw`h-2/3 w-11/12 bg-blue-300 rounded-lg flex flex-col justify-center items-center  mt-5`}>
                         <View style={tw`h-full w-11/12`}>
                             <View style={tw`h-full flex flex-col justify-center items-center`}>
                                 <ScrollView style={tw`h-full w-full `} >
