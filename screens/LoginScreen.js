@@ -15,7 +15,7 @@ const LoginScreen = ({navigation,route}) => {
     const [password,setPassword] = useState("");
 
     const signIn = () => {
-
+        navigation.navigate('Home')
     }
 
     return (

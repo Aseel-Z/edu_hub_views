@@ -20,7 +20,7 @@ function Student(data) {
     if (data.member_type=='student'){
         return (
         <View style={tw`p-4 md:p-12 text-center lg:text-left`}>
-            <View style={tw`block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500`} >
+            <View style={tw`block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 mt-1`} >
                 <Image  style={tw`w-full h-full`} source = {data.image}/>
             </View>
             <Text style={tw`text-4xl font-bold pt-8 `}>{data.name}</Text>
@@ -39,7 +39,7 @@ function Educator(data) {
     if (data.member_type=='educator'){
         return (
         <View style={tw`p-4 md:p-12 text-center lg:text-left`}>
-            <View style={tw`block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500`} >
+            <View style={tw`block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 mt-1`} >
                 <Image  style={tw`w-full h-full`} source = {data.image}/>
             </View>
             <Text style={tw`text-4xl font-bold pt-8 `}>{data.name}</Text>
@@ -60,7 +60,7 @@ function Institute(data) {
     if (data.member_type=='institute'){
         return (
         <View style={tw`p-4 md:p-12 text-center lg:text-left`}>
-            <View style={tw`block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500`} >
+            <View style={tw`block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 mt-1`} >
                 <Image  style={tw`w-full h-full`} source = {data.image}/>
             </View>
             <Text style={tw`text-4xl font-bold pt-8`}>{data.name}</Text>
@@ -81,12 +81,20 @@ const ProfileScreen = ({navigation,route}) => {
     // my-32  --view 2
     
     return (
-        <View style={tw`flex flex-col justify-center items-center`}>
+        <View style={tw`flex flex-col items-center mt-5`}>
         <View style={tw`w-4/5 flex items-center justify-center h-auto lg:h-screen flex-wrap mx-auto my-16 lg:my-0`}>
         <View style={tw`w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 lg:mx-0`}>
+            <View style={tw`w-full flex flex flex-row bg-blue-100 p-2 justify-around items-center border-b mb-3`}>
+                        <Button containerStyle={tw`m-0 bg-gray-100 `} type={'outline'}title={'Home'}/>
+                        <Button containerStyle={tw`m-0 `} onPress={() => {navigation.navigate('Profile')}} title={'Profile'}/>
+                        <Button containerStyle={tw`m-0 `} onPress={() => {navigation.navigate('Search')}} title={'Search'}/>
+                        <Button containerStyle={tw`m-0 `} onPress={() => {navigation.navigate('Login')}} title={'Sign Out'}/>
+            </View>
+            <View>
             {Student(route.params.data)}
             {Educator(route.params.data)}
             {Institute(route.params.data)}
+            </View>
         </View>
         </View>
         </View>
