@@ -6,6 +6,7 @@ const SearchScreen = () => {
     return (
         <View>
             
+            
         </View>
     )
 }
