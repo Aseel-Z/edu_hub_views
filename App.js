@@ -28,6 +28,7 @@ export default function App() {
   
   return (
     <NavigationContainer >
+
       <Stack.Navigator screenOptions ={globalScreenOption}>
         <Stack.Screen component={LoginScreen} initialParams={{setUsername:setUsername,setPass:setPass}} name="Login"></Stack.Screen>
         <Stack.Screen component={RegisterScreen} initialParams={{setUsername:setUsername,setPass:setPass}} name="Register"></Stack.Screen>
@@ -35,6 +36,7 @@ export default function App() {
         <Stack.Screen component={ResultScreen} data={{}} name="Result"></Stack.Screen>
         <Stack.Screen component={ProfileScreen} data={{}} name="Profile"></Stack.Screen>
         <Stack.Screen component={SearchScreen} data={{}} name="Search"></Stack.Screen>
+
       </Stack.Navigator>
     </NavigationContainer>
 
