@@ -27,7 +27,6 @@ export default function App() {
   const [pass,setPass] = useState('')
   
   return (
-
     <NavigationContainer >
       <Stack.Navigator screenOptions ={globalScreenOption}>
         <Stack.Screen component={LoginScreen} initialParams={{setUsername:setUsername,setPass:setPass}} name="Login"></Stack.Screen>
