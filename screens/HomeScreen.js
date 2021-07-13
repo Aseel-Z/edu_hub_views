@@ -122,24 +122,24 @@ export default HomeScreen
 // {console.log(route.params.username),console.log(route.params.pass)}
 
 {/* <View style={tw`h-1/3 w-11/12 bg-blue-300 rounded-lg flex flex-row justify-around items-center`}>
-                        <View style={tw`h-5/6 w-2/6 flex flex-col items-center justify-around `}>
-                            <Image style={styles.img} source={{uri:"https://image.flaticon.com/icons/png/512/3135/3135715.png"}}/>
-                            <View style={tw`h-1/2 w-11/12 bg-blue-200 rounded-lg flex flex-col justify-around items-center`}>
-                                <Text style={styles.text} >Name:</Text>
-                                <Text style={styles.text} >Hisham</Text>
-                                <Text style={styles.text} >Location:</Text>
-                                <Text style={styles.text} >Amman</Text>
-                            </View>
-                        </View>
-                        <View style={tw`h-5/6 w-4/6 flex flex-col items-center justify-around`}>
-                            <Input containerStyle={tw`w-11/12 bg-gray-100 mt-10 rounded-lg`}
-                                placeholder="Post"
-                                autoFocus 
-                                type="text"
-                                value={post}
-                                multiline={true}
-                                onChangeText={(text)=>{setPost(text)}}
-                            />
-                            <Button onPress={addPost}  title="     post     "/>
-                        </View>
-                    </View> */}
+<View style={tw`h-5/6 w-2/6 flex flex-col items-center justify-around `}>
+    <Image style={styles.img} source={{uri:"https://image.flaticon.com/icons/png/512/3135/3135715.png"}}/>
+    <View style={tw`h-1/2 w-11/12 bg-blue-200 rounded-lg flex flex-col justify-around items-center`}>
+        <Text style={styles.text} >Name:</Text>
+        <Text style={styles.text} >Hisham</Text>
+        <Text style={styles.text} >Location:</Text>
+        <Text style={styles.text} >Amman</Text>
+    </View>
+</View>
+<View style={tw`h-5/6 w-4/6 flex flex-col items-center justify-around`}>
+    <Input containerStyle={tw`w-11/12 bg-gray-100 mt-10 rounded-lg`}
+        placeholder="Post"
+        autoFocus 
+        type="text"
+        value={post}
+        multiline={true}
+        onChangeText={(text)=>{setPost(text)}}
+    />
+    <Button onPress={addPost}  title="     post     "/>
+</View>
+</View> */}
