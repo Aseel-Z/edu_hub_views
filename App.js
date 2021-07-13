@@ -1,9 +1,4 @@
 import { StatusBar } from 'expo-status-bar';
-
-
-
-
-
 import React, {useState} from 'react';
 import { StyleSheet , Button , Text, View , Link ,TextInput} from 'react-native';
 import tw from 'tailwind-react-native-classnames';
@@ -33,16 +28,13 @@ export default function App() {
   
   return (
     <NavigationContainer >
-          <Stack.Navigator screenOptions ={globalScreenOption}>
-              <Stack.Screen component={ResultScreen} data={{}} name="Result"></Stack.Screen>
-              <Stack.Screen component={SearchScreen} data={{}} name="Search"></Stack.Screen>
-              
-              <Stack.Screen component={LoginScreen} initialParams={{setUsername:setUsername,setPass:setPass}} name="Login"></Stack.Screen>
-              <Stack.Screen component={ProfileScreen} data={{}} name="Profile"></Stack.Screen>
-              
-              
-              <Stack.Screen component={RegisterScreen} initialParams={{setUsername:setUsername,setPass:setPass}} name="Register"></Stack.Screen>
-              <Stack.Screen component={HomeScreen} initialParams={{username:username,pass:pass}} name="Home"></Stack.Screen>
+      <Stack.Navigator screenOptions ={globalScreenOption}>
+        <Stack.Screen component={LoginScreen} initialParams={{setUsername:setUsername,setPass:setPass}} name="Login"></Stack.Screen>
+        <Stack.Screen component={RegisterScreen} initialParams={{setUsername:setUsername,setPass:setPass}} name="Register"></Stack.Screen>
+        <Stack.Screen component={HomeScreen} initialParams={{username:username,pass:pass}} name="Home"></Stack.Screen>
+        <Stack.Screen component={ResultScreen} data={{}} name="Result"></Stack.Screen>
+        <Stack.Screen component={ProfileScreen} data={{}} name="Profile"></Stack.Screen>
+        <Stack.Screen component={SearchScreen} data={{}} name="Search"></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
 

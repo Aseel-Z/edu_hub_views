@@ -95,5 +95,3 @@ const ProfileScreen = ({navigation,route}) => {
 }
 
 export default ProfileScreen
-
-
