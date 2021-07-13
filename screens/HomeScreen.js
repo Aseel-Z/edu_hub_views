@@ -4,8 +4,10 @@ import { Input, Text, Button,Image  } from 'react-native-elements';
 import { Dimensions } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 
+
 const HomeScreen = ({navigation,route}) => {
 
+    
     const dd={
         image:{uri:'https://image.flaticon.com/icons/png/512/3135/3135715.png'},
         name:'Person teacher',
@@ -60,19 +62,17 @@ const HomeScreen = ({navigation,route}) => {
     return (
         <View style={styles.container}>
             <View style={{ width:viewWidth,height:devHight}}>
-                <View style={tw`mt-4 flex flex-col items-center`}>
-                    <View style={tw`flex flex flex-row`}>
-                        <Button containerStyle={tw`m-1`} onPress={() => {navigation.navigate('Register')}} type={'outline'}title={'Home'}/>
-                        <Button containerStyle={tw`m-1`} onPress={() => {navigation.navigate('Profile')}} title={'Profile'}/>
-                        <Button containerStyle={tw`m-1`} onPress={() => {navigation.navigate('Search')}} title={'Search'}/>
-                        <Button containerStyle={tw`m-1`} onPress={() => {navigation.navigate('Login')}} title={'Sign Out'}/>
+                <View style={tw`mt-4 flex flex-col bg-blue-300 items-center pb-2 rounded-lg`}>
+                    <View style={tw`w-full flex flex flex-row bg-blue-100 p-2 justify-around items-center border-b mb-3`}>
+                        <Button containerStyle={tw`m-0 bg-gray-100 `} onPress={() => {navigation.navigate('Register')}} type={'outline'}title={'Home'}/>
+                        <Button containerStyle={tw`m-0 `} onPress={() => {navigation.navigate('Profile')}} title={'Profile'}/>
+                        <Button containerStyle={tw`m-0 `} onPress={() => {navigation.navigate('Search')}} title={'Search'}/>
+                        <Button containerStyle={tw`m-0 `} onPress={() => {navigation.navigate('Login')}} title={'Sign Out'}/>
                     </View>
-                </View>
-                <View style={tw`w-full h-full flex flex-col items-center mt-5`}>
-                    <View style={tw`w-11/12 rounded-lg flex flex-row justify-around items-center`}>
-                           <View style={tw`w-full flex flex-row items-center justify-around`}>
-                                <Image style={styles.img} source={{uri:"https://image.flaticon.com/icons/png/512/3135/3135715.png"}}/>
-                                <Input containerStyle={tw`w-4/5 bg-gray-100 border rounded-full`}
+                    <View style={tw`w-11/12 rounded-lg flex flex-row justify-between items-center`}>
+                            <Image style={styles.img} source={{uri:"https://image.flaticon.com/icons/png/512/3135/3135715.png"}}/>
+                           <View style={tw`w-full flex flex-col items-center justify-around pb-1`}>
+                                <Input containerStyle={tw`w-4/5 bg-gray-100 border rounded-md`}
                                     placeholder="Post"
                                     autoFocus 
                                     type="text"
@@ -80,10 +80,12 @@ const HomeScreen = ({navigation,route}) => {
                                     multiline={true}
                                     onChangeText={(text)=>{setPost(text)}}
                                 />
-                                <Button onPress={addPost}  title="post"/>
+                                <Button containerStyle={tw`w-4/5 rounded-md`} onPress={addPost}  title="post"/>
                            </View>
                     </View>
-                    <View style={tw`h-2/3 w-11/12 bg-blue-300 rounded-lg flex flex-col justify-center items-center  mt-5`}>
+                </View>
+                <View style={tw`w-full h-full flex flex-col items-center mt-5`}>
+                    <View style={tw`h-1/2 w-11/12 bg-blue-300 rounded-lg flex flex-col justify-center items-center  mt-5`}>
                         <View style={tw`h-full w-11/12`}>
                             <View style={tw`h-full flex flex-col justify-center items-center`}>
                                 <ScrollView style={tw`h-full w-full `} >
@@ -103,8 +105,8 @@ const HomeScreen = ({navigation,route}) => {
 const styles = StyleSheet.create({
     container:tw`flex items-center`,
     img:{
-        width:40 , 
-        height:40 ,
+        width:60 , 
+        height:60 ,
     },
     text:{
         fontSize:20,
