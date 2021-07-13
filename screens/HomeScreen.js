@@ -63,9 +63,9 @@ const HomeScreen = ({navigation,route}) => {
                 <View style={tw`mt-4 flex flex-col items-center`}>
                     <View style={tw`flex flex flex-row`}>
                         <Button containerStyle={tw`m-1`} onPress={() => {navigation.navigate('Register')}} type={'outline'}title={'Home'}/>
-                        <Button containerStyle={tw`m-1`} onPress={() => {navigation.navigate('Register')}} title={'Profile'}/>
-                        <Button containerStyle={tw`m-1`} onPress={() => {navigation.navigate('Register')}} title={'Search'}/>
-                        <Button containerStyle={tw`m-1`} onPress={() => {navigation.navigate('Register')}} title={'Sign Out'}/>
+                        <Button containerStyle={tw`m-1`} onPress={() => {navigation.navigate('Profile')}} title={'Profile'}/>
+                        <Button containerStyle={tw`m-1`} onPress={() => {navigation.navigate('Search')}} title={'Search'}/>
+                        <Button containerStyle={tw`m-1`} onPress={() => {navigation.navigate('Login')}} title={'Sign Out'}/>
                     </View>
                 </View>
                 <View style={tw`w-full h-full flex flex-col items-center mt-5`}>
