@@ -5,7 +5,7 @@ import { Button  } from 'react-native-elements';
 const SearchScreen = () => {
     return (
         <View>
-            <Button onPress={()=>{navigation.navigate('Result',{data:'result'})}}  title="Send Message" />
+            
         </View>
     )
 }
