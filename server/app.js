@@ -12,7 +12,11 @@ app.get('/', function (req, res) {
 });
 
 io.on('connection', function(socket) {
-    
+    console.log(socket.id)
+    socket.on("update", () => {
+        console.log("update")
+        io.emit("update");
+    })
 })
 // const sessionMiddleware = session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }});
 // // register middleware in Express
