@@ -16,19 +16,17 @@ const AboutUsScreen = () => {
 
         <KeyboardAvoidingView behavior="padding" style={styles.twCont}>
             <View style={styles.inputContainer}>
-            <Text>
+            <Text class="font-mono text-5xlg p-2" >
             eduHub is a professional networking platform for people in education, who are based in Jordan.
             The platform helps educators,  teachers, professors, trainers, coaches,private tutors, 
             students and educational institutes professionally connect with each other. 
             </Text>
-            <Text>
+            <Text class="font-mono text-5xlg p-2">
             eduHub is a platform for students and educators to connect and share knowledge for all subject fields.
             It connects teachers and students educational institutes.
             </Text>
             </View>
         </KeyboardAvoidingView>
-        
-        
     )
 }
 
@@ -41,10 +39,6 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         padding: 20
-    },
-    button:{
-        width:900,
-        marginTop:20
     },
     container:{
         flex:1,

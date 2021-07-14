@@ -36,6 +36,10 @@ export async function getData(username,password,apiExt){
 export async function getMsg(apiExt){
 
     const url = baseURL+apiExt
+    // const response = axios.post(url,{
+    //     username,
+    //     password
+    // })
     // const config = {
     //     headers:{
     //         Authorization: `Bearer ${token}`
