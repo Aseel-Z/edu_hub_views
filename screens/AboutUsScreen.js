@@ -21,20 +21,14 @@ const AboutUsScreen = () => {
             The platform helps educators,  teachers, professors, trainers, coaches,private tutors, 
             students and educational institutes professionally connect with each other. 
             </Text>
+            <Text>
+            eduHub is a platform for students and educators to connect and share knowledge for all subject fields.
+            It connects teachers and students educational institutes.
+            </Text>
             </View>
-
-           {/* <StatusBar style="light" />
-            
-        //     <Image style={{width:200 , height:200, marginBottom:30 }} source={{uri:"https://image.flaticon.com/icons/png/512/3256/3256114.png"}}/>  
-        //     <Text style={{marginBottom:30 , fontSize:30, fontWeight:'bold', color:"#2C6BED"}}>
-        //         EDU HUB
-        //     </Text>
-
-           
-        //     <Button containerStyle={styles.button} onPress={signIn} title="Login" />
-        //     <Button containerStyle={styles.button} onPress={() => {navigation.navigate('Register')}} type="outline" title="Register" />
-        //     <View style={{height:30}} /> */}
         </KeyboardAvoidingView>
+        
+        
     )
 }
 
@@ -60,3 +54,5 @@ const styles = StyleSheet.create({
     },
     twCont:tw`flex flex-col justify-center items-center`
   });
+
+
