@@ -6,10 +6,13 @@
 
 <script>
     var socket = io();
+    // send button on messagesScreen
     var button = document.querySelector('button')
     button.onclick = function() {
-        console.log('Sending Update!')
-        socket.emit("update")
+        // console.log('Sending Update!')
+        console.log('index!')
+        socket.emit('update')
+        console.log('index22!')
     }
 
 

@@ -12,74 +12,33 @@ import ProfileScreen from './screens/ProfileScreen';
 import SearchScreen from './screens/SearchScreen';
 import ResultScreen from './screens/ResultScreen';
 import MessagesScreen from './screens/MessagesScreen';
-// import React from 'react';
-// // import { render } from 'react-dom';
-// import {
-//   StyleSheet,
-//   Text,
-//   View,
-// } from 'react-native';
 
-// window.navigator.userAgent = 'react-native';
 import io from 'socket.io-client/dist/socket.io';
 
 
-export default class App extends React.Component{
-  state = {name: 'Aseel'}
+// export default class App extends React.Component{
+//   state = {name: 'Aseel'}
 
-
-  constructor(){
-    super();
-    this.socket = io('localhost:3000', {jsonp:false});
-    this.socket.on('update', ()=>{this.setState({name :'Ahmad'})}
-    )}
-
-
-render(){
-  return (
-    <View styles = {styles.container}>
-      <Text> {this.state.name}</Text>
-
-    </View>
-  )
-}}
-
-
-
-
-// export default class App extends React.Component {
-//   state = {
-//     count: 0
-//   }
 
 //   constructor(){
 //     super();
-//     this.socket = io('localhost:3000', {jsonp:false});}
+//     this.socket = io('localhost:19006', {jsonp:false}),
+//     console.log('APP'),
+//     this.socket.on('update', ()=>{this.Setstate({name :'Ahmad'})},
+//     // one update is emitted from 
+//     console.log('APP22')
+//     )}
 
-//   onPress = () => {
-//     this.setState({
-//       count: this.state.count + 1
-//     })
-//   }
 
-//  render() {
-//     return (
-//       <View style={styles.container}>
-//         <TouchableOpacity
-//          style={styles.button}
-//          onPress={this.onPress}
-//         >
-//          <Text>Click me</Text>
-//         </TouchableOpacity>
-//         <View>
-//           <Text>
-//             You clicked { this.state.count } times
-//           </Text>
-//         </View>
-//       </View>
-//     )
-//   }
-// }
+// render(){
+//   return (
+//     <View styles = {styles.container}>
+//       <Text> {this.state.name}</Text>
+
+//     </View>
+//   )
+// }}
+
 
 // const styles = StyleSheet.create({
 //   container: {
@@ -109,14 +68,12 @@ const globalScreenOption = {
 };
 
 export default function App() {
-  state = {name: 'Aseel'}
-
-
-  constructor(){
-    super();
-    this.socket = io('localhost:3000', {jsonp:false});
-    this.socket.on('update', ()=>{this.setState({name :'Ahmad'})}
-    )}
+  // state = {name: 'Aseel'};
+  // constructor() {
+  //   super();
+  //   this.socket = io('localhost:3000', {jsonp:false}),
+  //   this.socket.on('update', () => {this.setState({name :'Ahmad'})})
+  // }
 
 
   const [username,setUsername] = useState('');
@@ -126,9 +83,9 @@ export default function App() {
 
     <NavigationContainer >
       <Stack.Navigator screenOptions ={globalScreenOption}>
-      <View styles = {styles.container}>
+      {/* <View styles = {styles.container}>
       <Text> {this.state.name}</Text>
-      </View>
+      </View> */}
         <Stack.Screen component={LoginScreen} initialParams={{setUsername:setUsername,setPass:setPass}} name="Login"></Stack.Screen>
         <Stack.Screen component={RegisterScreen} initialParams={{setUsername:setUsername,setPass:setPass}} name="Register"></Stack.Screen>
         <Stack.Screen component={ResultScreen} data={{}} name="Result"></Stack.Screen>
@@ -141,7 +98,7 @@ export default function App() {
 
   );
 }
-{/* <StatusBar style="auto" /> */}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -3,7 +3,7 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-
+// should send request to app 
 server.listen(3000);
 
 app.get('/', function (req, res) {
@@ -13,9 +13,10 @@ app.get('/', function (req, res) {
 
 io.on('connection', function(socket) {
     console.log(socket.id)
-    socket.on("update", () => {
+    socket.on('update', () => {
         console.log("update")
-        io.emit("update");
+        io.emit('update');
+        console.log("app.js")
     })
 })
 // const sessionMiddleware = session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }});
