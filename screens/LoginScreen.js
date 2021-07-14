@@ -12,11 +12,11 @@ const LoginScreen = ({navigation,route}) => {
 
     const devWidth = Dimensions.get('window').width;
 
-    const [email,setEmail] = useState("");
+    const [user,setUser] = useState("");
     const [password,setPassword] = useState("");
 
     const signIn = () => {
-        console.log(email,password)
+        console.log(user,password)
         const checkUser = (username,pass) =>{
             getToken(username,pass).then(response =>{
                 if (response != undefined){
@@ -24,7 +24,7 @@ const LoginScreen = ({navigation,route}) => {
                 }
             })
         }
-        checkUser(email,password)
+        checkUser(user,password)
     }
 
     return (
@@ -32,17 +32,17 @@ const LoginScreen = ({navigation,route}) => {
         <KeyboardAvoidingView behavior="padding" style={devWidth > 600? styles.twCon2: styles.twCont}>
             <StatusBar style="light" />
             
-            <Image style={{width:200 , height:200, marginBottom:30, marginTop:10 }} source={{uri:"https://image.flaticon.com/icons/png/512/3256/3256114.png"}}/>  
+            <Image style={{width:200 , height:200, marginBottom:30, marginTop:10 }} source={{uri:"https://image.flaticon.com/icons/png/512/4207/4207247.png"}}/>  
             <Text style={{marginBottom:30 , fontSize:30, fontWeight:'bold', color:"#2C6BED"}}>
                 EDU HUB
             </Text>
             <View style={styles.inputContainer}>
                <Input
-                placeholder="Email"
+                placeholder="Username"
                 autoFocus 
-                type="email"
-                value={email}
-                onChangeText={(text)=> {setEmail(text);route.params.setUsername(text);}}
+                type="text"
+                value={user}
+                onChangeText={(text)=> {setUser(text);route.params.setUsername(text);}}
                   /> 
                <Input 
                placeholder="password" 
@@ -75,6 +75,6 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         padding: 10
     },
-    twCont:tw`flex flex-col justify-center items-center m-3 border rounded-lg`,
-    twCon2:tw`flex flex-col justify-center items-center m-3 rounded-lg`
+    twCont:tw`flex flex-col items-center justify-center m-3 border rounded-lg`,
+    twCon2:tw`flex flex-col items-center justify-center m-3 rounded-lg`
   });
