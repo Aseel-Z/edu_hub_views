@@ -57,7 +57,7 @@ function Educator(data) {
 }
 
 function Institute(data) {
-    if (data.member.toLowerCase()=='institute'){
+    if (data.member.toLowerCase()=='organization'){
         return (
         <View style={tw`p-4 md:p-12 text-center lg:text-left`}>
             <View style={tw`block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500`} >

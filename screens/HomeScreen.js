@@ -6,6 +6,7 @@ import tw from 'tailwind-react-native-classnames';
 import { get_member_data } from '../services/api';
 
 
+
 const HomeScreen = ({navigation,route}) => {
     
 //     const dd={
@@ -57,6 +58,8 @@ const HomeScreen = ({navigation,route}) => {
         get_member_data('show_post/').then(response=>{
             console.log(response.data)
             setReport([1,2,3])
+            console.log('-----#####-----')
+            console.log(response.data)
             console.log(report)
         })
     },[])

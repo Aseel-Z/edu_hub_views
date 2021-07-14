@@ -12,28 +12,60 @@ const RegisterScreen = ({navigation,route}) => {
     const [password,setPassword] = useState("");
     const [email,setEmail] = useState("");
     const [full_name,setFull_name] = useState(""); // full name in first_name felid
-    const [interest,setInterest] = useState("");
+    const [specialization,setSpecialization] = useState("");
     const [city,setCity] = useState("");
     const [mobile_number,setMobile_number] = useState("");
     const [biography,setBiography] = useState("");
     const [hourly_tutoring_rate,setHourly_tutoring_rate] = useState("");
+    const [image_url,setImage_url] = useState("");
+    
     
     const [isSelected_1, setSelection_1] = useState(true);
     const [isSelected_2, setSelection_2] = useState(false);
     const [isSelected_3, setSelection_3] = useState(false);
+
+    const [male, setMale] = useState(false);
+    const [female, setFemale] = useState(false);
     
     const register = () =>{
-        sign(user,password,email,'signup/').then((res)=>{
+        let gender = 'M'
+        if (female){
+            gender = 'F'
+        }
+
+        let member = 'STUDENT'
+        if (isSelected_2){
+            member='EDUCATOR'
+        }
+
+        if (isSelected_3){
+            member='ORGANIZATION'
+        }
+        
+        // username="string" password="string" email=any@example.com first_name="string" city="cities_options" member="member_type" specialization="string"
+        // interests="string" biography="string" hourly_tutoring_rate=integer mobile_number="" organization_summary="string" gender=M/F
+        const data={
+            username:user,
+            password:password,
+            email:email,
+            first_name:full_name,
+            city:city,
+            member:member,
+            specialization:specialization,
+            interests:'',
+            biography:biography,
+            hourly_tutoring_rate:hourly_tutoring_rate,
+            mobile_number:mobile_number,
+            organization_summary:image_url,
+            gender:gender,
+        }
+        sign('signup/',data).then((res)=>{
                 navigation.navigate('Home');
-            create_data(user,password,'','data').then((res)=>{
-                
-            }).catch((error)=>{
-                console.log('error')
-            })
+                console.log(res)
             
             
         }).catch((error)=>{
-            console.log('the error is :')
+            console.log(error)
         })
     
     }
@@ -62,6 +94,25 @@ const RegisterScreen = ({navigation,route}) => {
             setSelection_1(false)
             setSelection_2(false)
             setSelection_3(true)
+        }
+    }
+
+    
+
+    const change_male=()=> {
+        if (male){
+            setMale(false)
+        }else{
+            setMale(true)
+            setFemale(false)
+        }
+    }
+    const change_female=()=> {
+        if (female){
+            setFemale(false)
+        }else{
+            setFemale(true)
+            setMale(false)
         }
     }
 
@@ -132,11 +183,11 @@ const RegisterScreen = ({navigation,route}) => {
                         />
                         <Input
                         style={{marginBottom:10}}
-                        placeholder="interest"
+                        placeholder="Specialization"
                         autoFocus 
                         type="text"
-                        value={interest}
-                        onChangeText={(text)=>{setInterest(text)}}
+                        value={specialization}
+                        onChangeText={(text)=>{setSpecialization(text)}}
                         />
                         <Input
                         style={{marginBottom:10}}
@@ -158,10 +209,45 @@ const RegisterScreen = ({navigation,route}) => {
                         style={{marginBottom:10}}
                         placeholder="hourly tutoring rate"
                         autoFocus 
-                        type="text"
+                        type="number"
                         value={hourly_tutoring_rate}
                         onChangeText={(text)=>{setHourly_tutoring_rate(text)}}
                         />
+
+                        <Input
+                        style={{marginBottom:10}}
+                        placeholder="Mobile number"
+                        autoFocus 
+                        type="number"
+                        value={mobile_number}
+                        onChangeText={(text)=>{setMobile_number(text)}}
+                        />
+
+                        <Input
+                        style={{marginBottom:10}}
+                        placeholder="Image url"
+                        autoFocus 
+                        type="text"
+                        value={image_url}
+                        onChangeText={(text)=>{setImage_url(text)}}
+                        />
+
+
+                        <View style={tw`flex flex-row mb-4`} >
+                            <CheckBox
+                            value={male}
+                            onValueChange={change_male}
+                            title="Male"
+                            />
+                            <Text style={tw`ml-4 mr-4`}>Male</Text>
+                            <CheckBox
+                            value={female}
+                            onValueChange={change_female}
+                            title="Female"
+                            />
+                        <Text style={tw`ml-4`}>Female</Text>
+                    
+                    </View>
                           
                 </ScrollView>   
             </SafeAreaView>   
@@ -187,46 +273,3 @@ const styles = StyleSheet.create({
 });
 export default RegisterScreen
 
-
-// const devWidth = Dimensions.get('window').width;
-
-// const [user,setUser] = useState("");
-// const [password,setPassword] = useState("");
-// const [email,setEmail] = useState("");
-
-// const [isSelected, setSelection] = useState(false);
-
-// const [name,setName] = useState("");
-
-// const [full_name,setFull_name] = useState(""); // full name in first_name felid
-// const [interest,setInterest] = useState("");
-// const [city,setCity] = useState("");
-// const [mobile_number,setMobile_number] = useState("");
-// const [biography,setBiography] = useState("");
-// const [hourly_tutoring_rate,setHourly_tutoring_rate] = useState("");
-
-
-{/* <View >
-                        
-    <CheckBox
-    value={isSelected}
-    onValueChange={setSelection(true)}
-    style={styles.checkbox}
-    title="Student"
-    />
-
-    <CheckBox
-    value={isSelected}
-    onValueChange={setSelection}
-    style={styles.checkbox}
-    title="Teacher"
-    />
-
-    <CheckBox
-    value={isSelected}
-    onValueChange={setSelection}
-    style={styles.checkbox}
-    title="Organization"
-    />
-
-</View> */}

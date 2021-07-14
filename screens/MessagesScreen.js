@@ -3,7 +3,7 @@ import { StyleSheet, View, ScrollView } from 'react-native'
 import { Input, Text, Button, Image } from 'react-native-elements';
 import { Dimensions } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 import axios from 'axios'
 import { getMsg } from '../services/api';
 

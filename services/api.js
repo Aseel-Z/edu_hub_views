@@ -2,13 +2,12 @@ import axios from 'axios'
 const baseURL = "https://edu-hub-jo.herokuapp.com/"
 const token = "api/token/"
 
-export async function sign(username,password,email,signExt){
+// ,username,password,email,full_name,city,member,specialization,interests,biography,hourly_tutoring_rate,mobile_number,image_url,gender
+export async function sign(signExt,data){
     const url = baseURL+signExt
-    const response = axios.post(url,{
-        username,
-        password,
-        email
-    })
+    const response = axios.post(url,data)
+    // username password email first_name  city member 
+    //  specialization  interests  biography  hourly_tutoring_rate  mobile_number  organization_summary  gender=M/F
     return response
 }
 

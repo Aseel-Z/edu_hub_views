@@ -13,7 +13,7 @@ import SearchScreen from './screens/SearchScreen';
 import ResultScreen from './screens/ResultScreen';
 import AboutUsScreen from './screens/AboutUsScreen';
 import MessagesScreen from './screens/MessagesScreen';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 
 const Stack = createStackNavigator();
 
