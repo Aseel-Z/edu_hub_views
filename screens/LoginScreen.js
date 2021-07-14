@@ -4,24 +4,35 @@ import { StatusBar } from 'expo-status-bar';
 import { Input , Button,Image  } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames';
 import { KeyboardAvoidingView } from 'react-native';
-
+import { Dimensions } from 'react-native';
+import { getToken } from '../services/api';
 
 
 const LoginScreen = ({navigation,route}) => {
+
+    const devWidth = Dimensions.get('window').width;
 
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
 
     const signIn = () => {
-
+        console.log(email,password)
+        const checkUser = (username,pass) =>{
+            getToken(username,pass).then(response =>{
+                if (response != undefined){
+                    navigation.navigate('Home')
+                }
+            })
+        }
+        checkUser(email,password)
     }
 
     return (
 
-        <KeyboardAvoidingView behavior="padding" style={styles.twCont}>
+        <KeyboardAvoidingView behavior="padding" style={devWidth > 600? styles.twCon2: styles.twCont}>
             <StatusBar style="light" />
             
-            <Image style={{width:200 , height:200, marginBottom:30 }} source={{uri:"https://image.flaticon.com/icons/png/512/3256/3256114.png"}}/>  
+            <Image style={{width:200 , height:200, marginBottom:30, marginTop:10 }} source={{uri:"https://image.flaticon.com/icons/png/512/3256/3256114.png"}}/>  
             <Text style={{marginBottom:30 , fontSize:30, fontWeight:'bold', color:"#2C6BED"}}>
                 EDU HUB
             </Text>
@@ -64,5 +75,6 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         padding: 10
     },
-    twCont:tw`flex flex-col justify-center items-center`
+    twCont:tw`flex flex-col justify-center items-center m-3 border rounded-lg`,
+    twCon2:tw`flex flex-col justify-center items-center m-3 rounded-lg`
   });

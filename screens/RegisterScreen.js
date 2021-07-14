@@ -2,8 +2,12 @@ import React, {useState} from 'react'
 import { StatusBar } from 'expo-status-bar';
 import { View, StyleSheet, KeyboardAvoidingView,ScrollView,SafeAreaView } from 'react-native'
 import { Input, Button, Text } from 'react-native-elements';
+import { Dimensions } from 'react-native';
+import tw from 'tailwind-react-native-classnames';
 
 const RegisterScreen = ({navigation,route}) => {
+
+    const devWidth = Dimensions.get('window').width;
 
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");

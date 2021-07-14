@@ -1,6 +1,6 @@
 import axios from 'axios'
-const baseURL = "url"
-const token = "/token-ext/"
+const baseURL = "https://edu-hub-jo.herokuapp.com/"
+const token = "/api/token/"
 
 export async function getToken(username,password){
     const url = baseURL+token
@@ -21,6 +21,17 @@ export async function getData(username,password,apiExt){
         }
     }
     return axios.get(url,config)
+}
+
+export async function getMsg(apiExt){
+
+    const url = baseURL+apiExt
+    // const config = {
+    //     headers:{
+    //         Authorization: `Bearer ${token}`
+    //     }
+    // }
+    return axios.get(url)
 }
 
 export async function create_data(username,password,apiExt,data){
