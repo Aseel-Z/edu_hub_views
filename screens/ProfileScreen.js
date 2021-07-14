@@ -17,11 +17,11 @@ const icons ={
 
 
 function Student(data) {
-    if (data.member_type=='student'){
+    if (data.member.toLowerCase()=='student'){
         return (
         <View style={tw`p-4 md:p-12 text-center lg:text-left`}>
             <View style={tw`block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500`} >
-                <Image  style={tw`w-full h-full`} source = {data.image}/>
+                <Image  style={tw`w-full h-full`} source = {{uri:'https://image.flaticon.com/icons/png/512/3135/3135715.png'}}/>
             </View>
             <Text style={tw`text-4xl font-bold pt-8 `}>{data.name}</Text>
             <View style={tw`mx-auto lg:mx-0 w-full pt-3 border-b-2 border-green-500 opacity-25`}></View>
@@ -36,11 +36,11 @@ function Student(data) {
 }
 
 function Educator(data) {
-    if (data.member_type=='educator'){
+    if (data.member.toLowerCase()=='educator'){
         return (
         <View style={tw`p-4 md:p-12 text-center lg:text-left`}>
             <View style={tw`block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500`} >
-                <Image  style={tw`w-full h-full`} source = {data.image}/>
+                <Image  style={tw`w-full h-full`} source = {{uri:'https://image.flaticon.com/icons/png/512/3135/3135715.png'}}/>
             </View>
             <Text style={tw`text-4xl font-bold pt-8 `}>{data.name}</Text>
             <View style={tw`mx-auto lg:mx-0 w-full pt-3 border-b-2 border-green-500 opacity-25`}></View>
@@ -57,11 +57,11 @@ function Educator(data) {
 }
 
 function Institute(data) {
-    if (data.member_type=='institute'){
+    if (data.member.toLowerCase()=='institute'){
         return (
         <View style={tw`p-4 md:p-12 text-center lg:text-left`}>
             <View style={tw`block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500`} >
-                <Image  style={tw`w-full h-full`} source = {data.image}/>
+                <Image  style={tw`w-full h-full`} source = {{uri:'https://image.flaticon.com/icons/png/512/3135/3135715.png'}}/>
             </View>
             <Text style={tw`text-4xl font-bold pt-8`}>{data.name}</Text>
             <View style={tw`mx-auto lg:mx-0 w-full pt-3 border-b-2 border-green-500 opacity-25`}></View>

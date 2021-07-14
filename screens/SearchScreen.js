@@ -63,186 +63,182 @@ const SearchScreen = ({navigation,route}) => {
 
 
     const filter_data = () =>{
-        get_member_data().then((res)=>{
-            let result = [{d:1}]
+        get_member_data('login/show_members/').then((res)=>{
+            let result = []
             let person ;
             const persons = res.data
             for (let i= 0;i<persons.length;i++){
                 person = persons[i]
-            
+                if (person.member != null){
+                    let limit_1 = false
+                    let limit_2 = false
+                    let limit_3 = false
+                    let limit_4 = false
+                    
+                    // check select all
+                    if(option_1_1){
+                        limit_1= true
+                    }
+                    if(option_2_1){
+                        limit_2= true
+                    }
+                    if(option_3_1){
+                        limit_3= true
+                    }
+                    if(option_4_1){
+                        limit_4= true
+                    }
+                    // check specialization limit
+                    if(option_1_2){
+                        if(person.specialization=='Math'){
+                            limit_1= true
+                        }     
+                    }
+                    if(option_1_3){
+                        if(person.specialization=='Science'){
+                            limit_1= true
+                        }     
+                    }
+                    if(option_1_4){
+                        console.log(option_1_4)
+                        if(person.specialization=='History'){
+                            limit_1= true
+                        }     
+                    }
+                    if(option_1_5){
+                        if(person.specialization=='Computer'){
+                            limit_1= true
+                        }     
+                    }
+                    if(option_1_6){
+                        if(person.specialization=='Chemistry'){
+                            limit_1= true
+                        }     
+                    }
+                    if(option_1_7){
+                        if(person.specialization=='Physics'){
+                            limit_1= true
+                        }     
+                    }
+                    if(option_1_8){
+                        if(person.specialization=='Geography'){
+                            limit_1= true
+                        }     
+                    }
+                    if(option_1_9){
+                        if(person.specialization=='Other'){
+                            limit_1= true
+                        }     
+                    }
 
-            let limit_1 = false
-            let limit_2 = false
-            let limit_3 = false
-            let limit_4 = false
-            
-            // check select all
-            if(option_1_1){
-                limit_1= true
+                    // check Location limit
+                    if(option_2_2){
+                        console.log(option_2_2)
+                        if(person.city=='Amman'){
+                            limit_2= true
+                        }     
+                    }
+                    if(option_2_3){
+                        if(person.city=='Zarqa'){
+                            limit_2= true
+                        }     
+                    }
+                    if(option_2_4){
+                        if(person.city=='Irbid'){
+                            limit_2= true
+                        }     
+                    }
+                    if(option_2_5){
+                        if(person.city=='Balqa'){
+                            limit_2= true
+                        }     
+                    }
+                    if(option_2_6){
+                        if(person.city=='Ajloun'){
+                            limit_2= true
+                        }     
+                    }
+                    if(option_2_7){
+                        if(person.city=='Jerash'){
+                            limit_2= true
+                        }     
+                    }
+                    if(option_2_8){
+                        if(person.city=='Mafraq'){
+                            limit_2= true
+                        }     
+                    }
+                    if(option_2_9){
+                        if(person.city=='Madaba'){
+                            limit_2= true
+                        }     
+                    }
+                    if(option_2_10){
+                        if(person.city=='Karak'){
+                            limit_2= true
+                        }     
+                    }
+                    if(option_2_11){
+                        if(person.city=='Tafilah'){
+                            limit_2= true
+                        }     
+                    }
+                    if(option_2_12){
+                        if(person.city=='Maan'){
+                            limit_2= true
+                        }     
+                    }
+                    if(option_2_13){
+                        if(person.city=='Aqaba'){
+                        
+                            limit_2= true
+                        }     
+                    }
+                    // check gender limit
+                    if(option_3_2){
+                        if(person.gender=='Male'){
+                            limit_3= true
+                        }     
+                    }
+                    if(option_3_3){
+                        if(person.gender=='Female'){
+                            limit_3= true
+                        }     
+                    }
+                    // check specialization limit
+                    if(option_4_2){
+                        if(person.hourly_tutoring_rate<10){
+                            limit_4= true
+                        }     
+                    }
+                    if(option_4_3){
+                        if(person.hourly_tutoring_rate>=10 && person.hourly_tutoring_rate<=20){
+                            limit_4= true
+                        }     
+                    }
+                    if(option_4_4){
+                        if(person.hourly_tutoring_rate>=20 && person.hourly_tutoring_rate<=30){
+                            limit_4= true
+                        }     
+                    }
+                    if(option_4_5){
+                        if(person.hourly_tutoring_rate>=30 && person.hourly_tutoring_rate<=40){
+                            limit_4= true
+                        }     
+                    }
+                    if(option_4_6){
+                        if(person.hourly_tutoring_rate>=40 && person.hourly_tutoring_rate<=50){
+                            limit_4= true
+                        }     
+                    }
+                    if (limit_1 && limit_2 && limit_3 && limit_4){
+                        result.push(person)
+                    }
+                    console.log(result)
+                }
             }
-            if(option_2_1){
-                limit_2= true
-            }
-            if(option_3_1){
-                limit_3= true
-            }
-            if(option_4_1){
-                limit_4= true
-            }
-            
-
-            // check specialization limit
-            if(option_1_2){
-                if(person.specialization=='Math'){
-                    limit_1= true
-                }     
-            }
-            if(option_1_3){
-                if(person.specialization=='Science'){
-                    limit_1= true
-                }     
-            }
-            if(option_1_4){
-                if(person.specialization=='History'){
-                    limit_1= true
-                }     
-            }
-            if(option_1_5){
-                if(person.specialization=='Computer'){
-                    limit_1= true
-                }     
-            }
-            if(option_1_6){
-                if(person.specialization=='Chemistry'){
-                    limit_1= true
-                }     
-            }
-            if(option_1_7){
-                if(person.specialization=='Physics'){
-                    limit_1= true
-                }     
-            }
-            if(option_1_8){
-                if(person.specialization=='Geography'){
-                    limit_1= true
-                }     
-            }
-            if(option_1_9){
-                if(person.specialization=='Other'){
-                    limit_1= true
-                }     
-            }
-
-            // check Location limit
-            if(option_2_2){
-                if(person.location=='Amman'){
-                    limit_2= true
-                }     
-            }
-            if(option_2_3){
-                if(person.location=='Zarqa'){
-                    limit_2= true
-                }     
-            }
-            if(option_2_4){
-                if(person.location=='Irbid'){
-                    limit_2= true
-                }     
-            }
-            if(option_2_5){
-                if(person.location=='Balqa'){
-                    limit_2= true
-                }     
-            }
-            if(option_2_6){
-                if(person.location=='Ajloun'){
-                    limit_2= true
-                }     
-            }
-            if(option_2_7){
-                if(person.location=='Jerash'){
-                    limit_2= true
-                }     
-            }
-            if(option_2_8){
-                if(person.location=='Mafraq'){
-                    limit_2= true
-                }     
-            }
-            if(option_2_9){
-                if(person.location=='Madaba'){
-                    limit_2= true
-                }     
-            }
-            if(option_2_10){
-                if(person.location=='Karak'){
-                    limit_2= true
-                }     
-            }
-            if(option_2_11){
-                if(person.location=='Tafilah'){
-                    limit_2= true
-                }     
-            }
-            if(option_2_12){
-                if(person.location=='Maan'){
-                    limit_2= true
-                }     
-            }
-            if(option_2_13){
-                if(person.location=='Aqaba'){
-                
-                    limit_2= true
-                }     
-            }
-            // check gender limit
-            if(option_3_2){
-                if(person.gender=='Male'){
-                    limit_3= true
-                }     
-            }
-            if(option_3_3){
-                if(person.gender=='Female'){
-                    limit_3= true
-                }     
-            }
-            // check specialization limit
-            if(option_4_2){
-                if(person.hourly_tutoring_rate<10){
-                    limit_4= true
-                }     
-            }
-            if(option_4_3){
-                if(person.hourly_tutoring_rate>=10 && person.hourly_tutoring_rate<=20){
-                    limit_4= true
-                }     
-            }
-            if(option_4_4){
-                if(person.hourly_tutoring_rate>=20 && person.hourly_tutoring_rate<=30){
-                    limit_4= true
-                }     
-            }
-            if(option_4_5){
-                if(person.hourly_tutoring_rate>=30 && person.hourly_tutoring_rate<=40){
-                    limit_4= true
-                }     
-            }
-            if(option_4_6){
-                if(person.hourly_tutoring_rate>=40 && person.hourly_tutoring_rate<=50){
-                    limit_4= true
-                }     
-            }
-
-           
-
-            if (limit_1 && limit_2 && limit_3 && limit_4){
-                result.append(person)
-            }
-        }
-            console.log(result)
-            // navigation.navigate('Home');
-        }).catch((error)=>{
-            console.log('error')
+            const navigate = ()=>{navigation.navigate('Result',{data:result})}
+            navigate()
         })
     }
 

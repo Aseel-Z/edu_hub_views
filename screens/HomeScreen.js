@@ -1,44 +1,50 @@
-import React , {useState} from 'react'
+import React , {useEffect, useState} from 'react'
 import { StyleSheet,View,ScrollView} from 'react-native'
 import { Input, Text, Button,Image  } from 'react-native-elements';
 import { Dimensions } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
+import { get_member_data } from '../services/api';
 
 
 const HomeScreen = ({navigation,route}) => {
     
-    const dd={
-        image:{uri:'https://image.flaticon.com/icons/png/512/3135/3135715.png'},
-        name:route.params.username,
-        specialization:'Math',
-        biography:'math teacher with 10 years experience Totally optional short description about yourself, what you do and so on.',
-        city:'Amman',
-        email:'tree@udu.com',
-        mobile:'075692633',
-        post:'kksjah lldldkdjkduuajjsk nnndkkd/n kksjjssooosueje jhhhsjskkdkdl kkkkkkkllffkkhkh kksjah lldldkdjkduuajjsk ',
-        member_type:'educator'
-    }
+//     const dd={
+//         image:{uri:'https://image.flaticon.com/icons/png/512/3135/3135715.png'},
+//         name:route.params.username,
+//         specialization:'Math',
+//         biography:'math teacher with 10 years experience Totally optional short description about yourself, what you do and so on.',
+//         city:'Amman',
+//         email:'tree@udu.com',
+//         mobile:'075692633',
+//         post:'kksjah lldldkdjkduuajjsk nnndkkd/n kksjjssooosueje jhhhsjskkdkdl kkkkkkkllffkkhkh kksjah lldldkdjkduuajjsk ',
+//         member_type:'educator'
+//     }
 
-    const data = [dd,dd,dd,dd,dd,dd,dd,dd,dd,dd,dd]
+//     const data = [dd,dd,dd,dd,dd,dd,dd,dd,dd,dd,dd]
 
-    const icons ={
-        location:{uri:'https://image.flaticon.com/icons/png/512/684/684850.png'},
-        email:{uri:'https://image.flaticon.com/icons/png/512/580/580704.png'}, 
-        message:{uri:'https://image.flaticon.com/icons/png/512/893/893268.png'},   
-    }
+//     const icons ={
+//         location:{uri:'https://image.flaticon.com/icons/png/512/684/684850.png'},
+//         email:{uri:'https://image.flaticon.com/icons/png/512/580/580704.png'}, 
+//         message:{uri:'https://image.flaticon.com/icons/png/512/893/893268.png'},   
+//     }
+    const devHight = Dimensions.get('window').height;
+    const devWidth = Dimensions.get('window').width;
+    const viewWidth = devWidth > 600? 700 : devWidth
+    const [report,setReport] = useState([]);
+    const [post,setPost] = useState([])
     
-    const listResult = data.map((result,index) =>
-        <View key={index} style={tw`w-11/12 flex items-center justify-center flex-wrap my-2 my-0 w-11/12`}>
+    const listResult = report.map((result) =>
+        <View key={result.id} style={tw`w-11/12 flex items-center justify-center flex-wrap my-2 my-0 w-11/12`}>
             <View style={tw`p-2 w-full rounded-l-lg rounded-r-none shadow-2xl bg-white opacity-75 mx-0 flex flex-col mt-5 `}>    
                 <View style={tw`flex flex-row`}>
                     <View style={tw`flex flex-col mx-2 items-start justify-start`}>
-                        <Image onPress={()=>{navigation.navigate('Profile',{data:result})}} style={styles.img2} source = {result.image}/>
+                        <Image onPress={()=>{navigation.navigate('Profile',{data:result})}} style={styles.img2} source = {{uri:'https://image.flaticon.com/icons/png/512/3135/3135715.png'}}/>
                     </View>
                     <View style={tw`flex flex-col items-start justify-start`}>
-                        <Text style={tw`text-lg font-bold pt-0`}>{result.name}</Text>
+                        <Text style={tw`text-lg font-bold pt-0`}>{{h:'hisham'}}</Text>
                         <View style={tw`w-11/12`} >
                             <ScrollView style={tw`w-11/12 mb-1`}>
-                                <Text style={tw`w-4/5 text-blue-800 text-sm flex items-center justify-center justify-start`}> {result.post}</Text>
+                                <Text style={tw`w-4/5 text-blue-800 text-sm flex items-center justify-center justify-start`}> {result.post_body}</Text>
                             </ScrollView>
                         </View>
                     </View>
@@ -47,17 +53,31 @@ const HomeScreen = ({navigation,route}) => {
         </View>
     );
 
-    const devHight = Dimensions.get('window').height;
-    const devWidth = Dimensions.get('window').width;
-    const viewWidth = devWidth > 600? 700 : devWidth
-    const [post,setPost] = useState("")
+    useEffect(()=>{
+        get_member_data('show_post/').then(response=>{
+            console.log(response.data)
+            setReport([1,2,3])
+            console.log(report)
+        })
+    },[])
 
     const addPost = ()=>{
         console.log(post)
     }
 
-    const refresh = () =>{
-        navigation.navigate('Home')
+    const goProfile = ()=>{
+        get_member_data('login/show_members/').then(response => {
+            const data = response.data
+            let profileData = {}
+            for(let i = 0; i < data.length ;i ++){
+                if (data[i].username == route.params.username){
+                    profileData = data[i]
+                    break;
+                }
+            }
+            const navigate = ()=>{navigation.navigate('Profile',{data:profileData})}
+            navigate()
+        })
     }
 
     return (
@@ -65,8 +85,8 @@ const HomeScreen = ({navigation,route}) => {
             <View style={{ width:viewWidth,height:devHight}}>
                 <View style={tw`mt-4 flex flex-col bg-blue-300 items-center pb-2 rounded-lg`}>
                     <View style={tw`w-full flex flex flex-row bg-blue-100 p-2 justify-around items-center border-b mb-3`}>
-                        <Button containerStyle={tw`m-0 bg-gray-100 `} onPress={refresh} type={'outline'}title={'Home'}/>
-                        <Button containerStyle={tw`m-0 `} onPress={() => {navigation.navigate('Profile')}} title={'Profile'}/>
+                        <Button containerStyle={tw`m-0 bg-gray-100 `} type={'outline'}title={'Home'}/>
+                        <Button containerStyle={tw`m-0 `} onPress={goProfile} title={'Profile'}/>
                         <Button containerStyle={tw`m-0 `} onPress={() => {navigation.navigate('Search')}} title={'Search'}/>
                         <Button containerStyle={tw`m-0 `} onPress={() => {navigation.navigate('Login')}} title={'Sign Out'}/>
                     </View>
@@ -79,7 +99,7 @@ const HomeScreen = ({navigation,route}) => {
                                     type="text"
                                     value={post}
                                     multiline={true}
-                                    onChangeText={(text)=>{setPost(text)}}
+                                    onChangeText={addPost}
                                 />
                                 <Button containerStyle={tw`w-4/5 rounded-md`} onPress={addPost}  title="post"/>
                            </View>
@@ -91,7 +111,7 @@ const HomeScreen = ({navigation,route}) => {
                             <View style={tw`h-full flex flex-col justify-center items-center`}>
                                 <ScrollView style={tw`h-full w-full `} >
                                     <View style={tw`w-full flex flex-col justify-center items-center`}>
-                                        {listResult}
+                                        {/* {listResult} */}
                                     </View>
                                 </ScrollView>
                             </View>
