@@ -21,7 +21,7 @@ const ResultScreen = ({navigation,route}) => {
         <View style={tw`p-2 w-full lg:w-3/5 rounded-s lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 lg:mx-0 flex flex-row`}>
                 <Image  style={tw`w-28 h-28 mx-2`} source = {{uri:result.interests}}/>
                 <View style={tw`flex flex-col mx-2`}>
-                    <Text style={tw`text-2xl font-bold lg:pt-0`}>{result.name}</Text>
+                    <Text style={tw`text-2xl font-bold lg:pt-0`}>{result.first_name}</Text>
 
                     <View style={tw`flex flex-row mx-2 justify-center items-center`}>
                     

@@ -23,13 +23,13 @@ function Student(data) {
             <View style={tw`block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500`} >
                 <Image  style={tw`w-full h-full`} source = {{uri:data.interests}}/>
             </View>
-            <Text style={tw`text-4xl font-bold pt-8 `}>{data.name}</Text>
+            <Text style={tw`text-4xl font-bold pt-8 `}>{data.first_name}</Text>
             <View style={tw`mx-auto lg:mx-0 w-full pt-3 border-b-2 border-green-500 opacity-25`}></View>
-            <Text style={tw`pt-4 text-base font-bold flex items-center justify-center lg:justify-start`}>{data.interest}</Text>
+            <Text style={tw`pt-4 text-base font-bold flex items-center justify-center lg:justify-start`}>{data.specialization}</Text>
             <Text style={tw`pt-2 text-gray-600 text-s lg:text-sm flex items-center justify-center lg:justify-start`}><Image  style={tw`h-3 w-3`} source = {icons.location}/> {' '} {data.city}</Text>
             <Text style={tw`pt-2 text-gray-600 text-s lg:text-sm flex items-center justify-center lg:justify-start`}><Image  style={tw`h-3 w-3`} source = {icons.email}/> {' '} {data.email}</Text>
-            <Text onPress={()=>{Linking.openURL('tel:'+data.mobile);}} style={tw`text-3xl font-bold pt-8  text-blue-700 text-center text-3xl mb-6`}>{data.mobile}</Text>
-            <Button onPress={()=>{navigation.navigate('Search',{data:'result'})}}  title="Send Message" />
+            <Text onPress={()=>{Linking.openURL('tel:'+data.mobile_number);}} style={tw`text-3xl font-bold pt-8  text-blue-700 text-center text-3xl mb-6`}>{data.mobile_number}</Text>
+            <Button onPress= {() => Linking.openURL(`mailto:${data.email}`) } title="Send Email" />
         </View>
         )
     }
@@ -42,15 +42,15 @@ function Educator(data) {
             <View style={tw`block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500`} >
                 <Image  style={tw`w-full h-full`} source = {{uri:data.interests}}/>
             </View>
-            <Text style={tw`text-4xl font-bold pt-8 `}>{data.name}</Text>
+            <Text style={tw`text-4xl font-bold pt-8 `}>{data.first_name}</Text>
             <View style={tw`mx-auto lg:mx-0 w-full pt-3 border-b-2 border-green-500 opacity-25`}></View>
             <Text style={tw`pt-4 text-base font-bold flex items-center justify-center lg:justify-start`}>{data.specialization}</Text>
             <Text style={tw`pt-2 text-gray-600 text-s lg:text-sm flex items-center justify-center lg:justify-start`}><Image  style={tw`h-3 w-3`} source = {icons.location}/> {' '} {data.city}</Text>
             <Text style={tw`pt-2 text-gray-600 text-s lg:text-sm flex items-center justify-center lg:justify-start`}><Image  style={tw`h-3 w-3`} source = {icons.email}/> {' '} {data.email}</Text>
             <Text style={tw`pt-2 text-gray-600 text-s lg:text-sm flex items-center justify-center lg:justify-start`}><Image  style={tw`h-3 w-3`} source = {icons.rate}/> {' '} {data.hourly_tutoring_rate}</Text>
             <Text style={tw`pt-8 text-sm`}>{data.biography}</Text>
-            <Text  onPress={()=>{Linking.openURL('tel:'+data.mobile);}} style={tw`text-3xl font-bold pt-8 text-blue-700 text-center text-3xl mb-6`}>{data.mobile}</Text>
-            <Button onPress={()=>{navigation.navigate('Search',{data:'result'})}}  title="Send Message" />
+            <Text  onPress={()=>{Linking.openURL('tel:'+data.mobile_number);}} style={tw`text-3xl font-bold pt-8 text-blue-700 text-center text-3xl mb-6`}>{data.mobile_number}</Text>
+            <Button onPress={() => Linking.openURL(`mailto:${data.email}`) }  title="Send Email" />
         </View>
         )
     }
@@ -63,13 +63,13 @@ function Institute(data) {
             <View style={tw`block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500`} >
                 <Image  style={tw`w-full h-full`} source = {{uri:data.interests}}/>
             </View>
-            <Text style={tw`text-4xl font-bold pt-8`}>{data.name}</Text>
+            <Text style={tw`text-4xl font-bold pt-8`}>{data.first_name}</Text>
             <View style={tw`mx-auto lg:mx-0 w-full pt-3 border-b-2 border-green-500 opacity-25`}></View>
             <Text style={tw`pt-2 text-gray-600 text-s lg:text-sm flex items-center justify-center lg:justify-start`}><Image  style={tw`h-3 w-3`} source = {icons.location}/> {' '} {data.city}</Text>
             <Text style={tw`pt-2 text-gray-600 text-s lg:text-sm flex items-center justify-center lg:justify-start`}><Image  style={tw`h-3 w-3`} source = {icons.email}/> {' '} {data.email}</Text>
             <Text style={tw`pt-8 text-sm`}>{data.summary}</Text>
-            <Text  onPress={()=>{Linking.openURL('tel:'+data.mobile);}} style={tw`text-3xl font-bold pt-8 text-blue-700 text-center text-3xl mb-6`}>{data.mobile}</Text>
-            <Button onPress={()=>{navigation.navigate('Search',{data:'result'})}}  title="Send Message" />
+            <Text  onPress={()=>{Linking.openURL('tel:'+data.mobile_number);}} style={tw`text-3xl font-bold pt-8 text-blue-700 text-center text-3xl mb-6`}>{data.mobile_number}</Text>
+            <Button onPress={() => Linking.openURL(`mailto:${data.email}`) }  title="Send Email" />
         </View>
         )
     }
