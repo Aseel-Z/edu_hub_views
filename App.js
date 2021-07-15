@@ -13,7 +13,7 @@ import SearchScreen from './screens/SearchScreen';
 import ResultScreen from './screens/ResultScreen';
 import AboutUsScreen from './screens/AboutUsScreen';
 import MessagesScreen from './screens/MessagesScreen';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 
 const Stack = createStackNavigator();
 
@@ -31,11 +31,11 @@ export default function App() {
   return (
     <NavigationContainer >
       <Stack.Navigator screenOptions ={globalScreenOption}>        
+        <Stack.Screen component={LoginScreen} initialParams={{setUsername:setUsername,setPass:setPass}} name="Login"></Stack.Screen>
         <Stack.Screen component={AboutUsScreen} name="About Us"></Stack.Screen>
         <Stack.Screen component={HomeScreen} initialParams={{username:username,pass:pass}} name="Home"></Stack.Screen>
         <Stack.Screen component={ProfileScreen} name="Profile"></Stack.Screen>
         <Stack.Screen component={MessagesScreen} initialParams={{ username: username, pass: pass }} name="Messaging"></Stack.Screen>
-        <Stack.Screen component={LoginScreen} initialParams={{setUsername:setUsername,setPass:setPass}} name="Login"></Stack.Screen>
         <Stack.Screen component={RegisterScreen} initialParams={{setUsername:setUsername,setPass:setPass}} name="Register"></Stack.Screen>
         <Stack.Screen component={SearchScreen} name="Search"></Stack.Screen>
         <Stack.Screen component={ResultScreen} name="Result"></Stack.Screen>
