@@ -10,7 +10,7 @@ import { getMsg } from '../services/api';
 
 const MessagesScreen = ({navigation, route }) => {
     const [data, setData] = useState([])
-    const [chatMessages,setChatMessages ] = useState([])
+    // const [chatMessages,setChatMessages ] = useState([])
     
    
 
