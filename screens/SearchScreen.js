@@ -90,7 +90,7 @@ const SearchScreen = ({navigation,route}) => {
                     }
                     // check specialization limit
                     if(option_1_2){
-                        if(person.specialization=='Math'){
+                        if(person.specialization=='Computer Science'){
                             limit_1= true
                         }     
                     }
@@ -264,7 +264,7 @@ const SearchScreen = ({navigation,route}) => {
                     <ScrollView horizontal={true} style={tw`w-full`} >
                         <View style={tw`flex flex-row `}>
                             <Text onPress={()=>{option_1_1?setOption_1_1(false):setOption_1_1(true)}} style={option_1_1?bt_on:bt_off}>All</Text>
-                            <Text onPress={()=>{option_1_2?setOption_1_2(false):setOption_1_2(true)}} style={option_1_2?bt_on:bt_off}>Math</Text>
+                            <Text onPress={()=>{option_1_2?setOption_1_2(false):setOption_1_2(true)}} style={option_1_2?bt_on:bt_off}>Computer Science</Text>
                             <Text onPress={()=>{option_1_3?setOption_1_3(false):setOption_1_3(true)}} style={option_1_3?bt_on:bt_off}>Science</Text>
                             <Text onPress={()=>{option_1_4?setOption_1_4(false):setOption_1_4(true)}} style={option_1_4?bt_on:bt_off}>History</Text>
                             <Text onPress={()=>{option_1_5?setOption_1_5(false):setOption_1_5(true)}} style={option_1_5?bt_on:bt_off}>Computer</Text>
