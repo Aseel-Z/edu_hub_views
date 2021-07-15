@@ -8,23 +8,81 @@ import axios from 'axios'
 import { getMsg } from '../services/api';
 
 
-const MessagesScreen = ({navigation, route }) => {
+const MessagesScreen = ({ navigation, route }) => {
     const [data, setData] = useState([])
-    const [chatMessages,setChatMessages ] = useState([])
-    
-   
+    // const [chatMessages,setChatMessages ] = useState([])
 
-    useEffect(()=>{ 
+
+    function renderListResult() {
+        return (
+        <View style={tw`w-full h-full`}>
+        data.map((result) =>
+        <View key={result.id} style={tw`w-11/12 flex items-center justify-center flex-wrap my-2 my-0 w-11/12`}>
+            <View style={tw`p-2 w-full rounded-l-lg rounded-r-none shadow-2xl bg-white opacity-75 mx-0 flex flex-col mt-5 `}>
+                <View style={tw`flex flex-row`}>
+                    <View style={tw`flex flex-col mx-2 items-start justify-start`}>
+                        <Image style={styles.img2} source={{ uri: 'https://image.flaticon.com/icons/png/512/3135/3135715.png' }} />
+                    </View>
+                    <View style={tw`flex flex-col items-start justify-start`}>
+                        {/* <Text style={tw`text-lg font-bold pt-0`}>{result.name}</Text> */}
+                        <View style={tw`w-11/12`} >
+                            <ScrollView style={tw`w-11/12 mb-1`}>
+                                <Text style={tw`w-4/5 text-blue-800 text-sm mx-0 flex items-center justify-center justify-start`}> {result.message_body}</Text>
+                            </ScrollView>
+                        </View>
+                    </View>
+                </View>
+            </View>
+        </View>
+            </View>
+
+
+
+        )
+    }
+
+    useEffect(() => {
         getMsg('show_message/').then(
+            
             response => {
+
+                const data_all = response.data
+                const data = []
+                for(let i =data_all.length-1;i>=0;i--){
+                    data.push(data_all[i])
+                }
                 // console.log(response.data)
                 setData(response.data)
-    
+
             }
         )
-        
-    },[])
 
+    }, [])
+
+
+    // const addPost = () => {
+
+    //     const all_data = {
+    //         message_body: post,
+    //         creator_id: 27,
+    //         recipient_id: 27
+    //     }
+    //     sign('show_message/',all_data).then((res)=>{
+    //         get_member_data('show_message/').then(response => {
+    //             const data_all = response.data
+    //             const result = []
+    //             for(let i =data_all.length-1;i>=0;i--){
+    //                 result.push(data_all[i])
+    //             }
+    //             setReport(result)
+    //         })
+            
+    //     })
+    // }
+
+
+
+    
     // function setUpSocket(params) {
     //     socket = io('http://172.26.112.1:3000');
     //     // deploy - react
@@ -40,45 +98,26 @@ const MessagesScreen = ({navigation, route }) => {
 
 
 
-    
-   useEffect(()=>{
-        console.log({data})
-    },[data])
-    
+    useEffect(() => {
+        console.log({ data })
+    }, [data])
 
-    const listResult = data.map((result) =>
-    <View key={result.id} style={tw`w-11/12 flex items-center justify-center flex-wrap my-2 my-0 w-11/12`}>
-            <View style={tw`p-2 w-full rounded-l-lg rounded-r-none shadow-2xl bg-white opacity-75 mx-0 flex flex-col mt-5 `}>
-                <View style={tw`flex flex-row`}>
-                    <View style={tw`flex flex-col mx-2 items-start justify-start`}>
-                        <Image style={styles.img2} source={{uri:'https://image.flaticon.com/icons/png/512/3135/3135715.png'}} />
-                    </View>
-                    <View style={tw`flex flex-col items-start justify-start`}>
-                        {/* <Text style={tw`text-lg font-bold pt-0`}>{result.name}</Text> */}
-                        <View style={tw`w-11/12`} >
-                            <ScrollView style={tw`w-11/12 mb-1`}>
-                                <Text style={tw`w-4/5 text-blue-800 text-sm mx-0 flex items-center justify-center justify-start`}> {result.message_body}</Text>
-                            </ScrollView>
-                        </View>
-                    </View>
-                </View>
-            </View>
-        </View>
-    );
-    
+
+
+
     const devHight = Dimensions.get('window').height;
     const devWidth = Dimensions.get('window').width;
     const viewWidth = devWidth > 600 ? 700 : devWidth
     const [message, setMessage] = useState("")
-    
+
     const addMessage = () => {
         console.log(message)
     }
-    
+
     const refresh = () => {
         navigation.navigate('Home')
     }
-    
+
     return (
         <View style={styles.container}>
             <View style={{ width: viewWidth, height: devHight }}>
@@ -97,22 +136,22 @@ const MessagesScreen = ({navigation, route }) => {
                             <View style={tw`h-full flex flex-col justify-center items-center`}>
                                 <ScrollView style={tw`h-full w-full `} >
                                     <View style={tw`w-full flex flex-col justify-center items-center`}>
-                                        {listResult}
+                                    {renderListResult()}
                                     </View>
                                     <View style={tw`w-11/12 rounded-lg flex flex-row justify-between items-center`}>
-                            <Image style={styles.img} source={{uri:"https://image.flaticon.com/icons/png/512/3135/3135715.png"}}/>
-                           <View style={tw`w-full flex flex-col items-center justify-around pb-1`}>
-                                <Input containerStyle={tw`w-4/5 bg-gray-100 border rounded-md`}
-                                    placeholder="type your message..."
-                                    autoFocus 
-                                    type="text"
-                                    value={message}
-                                    multiline={true}
-                                    onChangeText={(text)=>{setMessage(text)}}
-                                    />
-                                <Button containerStyle={tw`w-4/5 rounded-md`} onPress={addMessage}  title= 'send'/>
-                           </View>
-                </View>
+                                        <Image style={styles.img} source={{ uri: "https://image.flaticon.com/icons/png/512/3135/3135715.png" }} />
+                                        <View style={tw`w-full flex flex-col items-center justify-around pb-1`}>
+                                            <Input containerStyle={tw`w-4/5 bg-gray-100 border rounded-md`}
+                                                placeholder="type your message..."
+                                                autoFocus
+                                                type="text"
+                                                value={message}
+                                                multiline={true}
+                                                onChangeText={(text) => { setMessage(text) }}
+                                            />
+                                            <Button containerStyle={tw`w-4/5 rounded-md`} onPress={addMessage} title='send' />
+                                        </View>
+                                    </View>
                                 </ScrollView>
                             </View>
                         </View>
