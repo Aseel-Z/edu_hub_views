@@ -25,12 +25,11 @@ const HomeScreen = ({ navigation, route }) => {
 
                     <View key={result.id} style={tw`w-11/12 flex items-center justify-center flex-wrap my-2 my-0 w-11/12`}>
                         <View style={tw`p-2 w-full rounded-l-lg rounded-r-none shadow-2xl bg-white opacity-75 mx-0 flex flex-col mt-5 `}>
-                            <View style={tw`flex flex-row h-16`}>
+                            <View style={tw`flex flex-row w-full`}>
                                 <View style={tw`flex flex-col mx-2 items-start justify-start`}>
-                                    <Image onPress={() => { navigation.navigate('Profile', { data: result }) }} style={styles.img2} source={{ uri: result.interests }} />
+                                    <Image style={styles.img2} source={{ uri: "https://image.flaticon.com/icons/png/512/3135/3135715.png" }} />
                                 </View>
-                                <View style={tw`flex flex-col items-start justify-start`}>
-                                    <Text style={tw`text-lg font-bold pt-0`}>{}</Text>
+                                <View style={tw`flex flex-col items-start justify-start w-full`}>           
                                     <View style={tw`w-11/12`} >
                                         <ScrollView style={tw`w-11/12 mb-1`}>
                                             <Text style={tw`w-4/5 text-blue-800 text-sm flex items-center justify-center justify-start`}> {result.message_body}</Text>
@@ -74,6 +73,7 @@ const HomeScreen = ({ navigation, route }) => {
             creator_id: 27,
             recipient_id: 27
         }
+        setPost('')
         sign('show_message/',all_data).then((res)=>{
             get_member_data('show_message/').then(response => {
                 const data_all = response.data
