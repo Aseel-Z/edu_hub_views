@@ -30,16 +30,15 @@ export default function App() {
 
   return (
     <NavigationContainer >
-
       <Stack.Navigator screenOptions ={globalScreenOption}>        
         <Stack.Screen component={LoginScreen} initialParams={{setUsername:setUsername,setPass:setPass}} name="Login"></Stack.Screen>
-        <Stack.Screen component={RegisterScreen} initialParams={{setUsername:setUsername,setPass:setPass}} name="Register"></Stack.Screen>
-        <Stack.Screen component={HomeScreen} initialParams={{username:username,pass:pass}} name="Home"></Stack.Screen>
-        <Stack.Screen component={SearchScreen} name="Search"></Stack.Screen>
-        <Stack.Screen component={MessagesScreen} initialParams={{ username: username, pass: pass }} name="Messaging"></Stack.Screen>
-        <Stack.Screen component={ResultScreen} name="Result"></Stack.Screen>
-        <Stack.Screen component={ProfileScreen} name="Profile"></Stack.Screen>
         <Stack.Screen component={AboutUsScreen} name="About Us"></Stack.Screen>
+        <Stack.Screen component={HomeScreen} initialParams={{username:username,pass:pass}} name="Home"></Stack.Screen>
+        <Stack.Screen component={ProfileScreen} name="Profile"></Stack.Screen>
+        <Stack.Screen component={MessagesScreen} initialParams={{ username: username, pass: pass }} name="Messaging"></Stack.Screen>
+        <Stack.Screen component={RegisterScreen} initialParams={{setUsername:setUsername,setPass:setPass}} name="Register"></Stack.Screen>
+        <Stack.Screen component={SearchScreen} name="Search"></Stack.Screen>
+        <Stack.Screen component={ResultScreen} name="Result"></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
 

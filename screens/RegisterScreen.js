@@ -44,6 +44,10 @@ const RegisterScreen = ({navigation,route}) => {
         
         // username="string" password="string" email=any@example.com first_name="string" city="cities_options" member="member_type" specialization="string"
         // interests="string" biography="string" hourly_tutoring_rate=integer mobile_number="" organization_summary="string" gender=M/F
+        let imageUrl = image_url
+        if(imageUrl=""){
+            imageUrl='https://image.flaticon.com/icons/png/512/3135/3135715.png'
+        }
         const data={
             username:user,
             password:password,
@@ -52,11 +56,11 @@ const RegisterScreen = ({navigation,route}) => {
             city:city,
             member:member,
             specialization:specialization,
-            interests:'',
+            interests:imageUrl,
             biography:biography,
-            hourly_tutoring_rate:hourly_tutoring_rate,
+            hourly_tutoring_rate:parseInt(hourly_tutoring_rate),
             mobile_number:mobile_number,
-            organization_summary:image_url,
+            organization_summary:'',
             gender:gender,
         }
         sign('signup/',data).then((res)=>{
