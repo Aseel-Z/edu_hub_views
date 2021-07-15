@@ -257,9 +257,6 @@ const SearchScreen = ({navigation,route}) => {
                 <ScrollView style={tw`w-full`} >
                     <View style={tw`w-full flex flex-col justify-center items-center`}>
                         
-                    
-
-
 
                     <Text style={tw`mt-4`} style={tw`text-base`}>Select specialization</Text>
 

@@ -19,8 +19,7 @@ const ResultScreen = ({navigation,route}) => {
     const listResult = route.params.data.map((result) =>
         <View key={result.id} onPress={()=>{console.log('**')}} style={tw`w-11/12 flex items-center justify-center h-auto lg:h-screen flex-wrap  my-2 lg:my-0 bg-red-200 w-11/12`}>
         <View style={tw`p-2 w-full lg:w-3/5 rounded-s lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 lg:mx-0 flex flex-row`}>
-                <Image  style={tw`w-28 h-28 mx-2`} source = {{uri:'https://image.flaticon.com/icons/png/512/3135/3135715.png'}}/>
-
+                <Image  style={tw`w-28 h-28 mx-2`} source = {{uri:result.interests}}/>
                 <View style={tw`flex flex-col mx-2`}>
                     <Text style={tw`text-2xl font-bold lg:pt-0`}>{result.name}</Text>
 

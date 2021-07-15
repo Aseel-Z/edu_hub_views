@@ -3,55 +3,37 @@ import { StyleSheet, View, ScrollView } from 'react-native'
 import { Input, Text, Button, Image } from 'react-native-elements';
 import { Dimensions } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
-import { get_member_data } from '../services/api';
+import { get_member_data, sign } from '../services/api';
 
 
 const HomeScreen = ({ navigation, route }) => {
 
-    //     const dd={
-    //         image:{uri:'https://image.flaticon.com/icons/png/512/3135/3135715.png'},
-    //         name:route.params.username,
-    //         specialization:'Math',
-    //         biography:'math teacher with 10 years experience Totally optional short description about yourself, what you do and so on.',
-    //         city:'Amman',
-    //         email:'tree@udu.com',
-    //         mobile:'075692633',
-    //         post:'kksjah lldldkdjkduuajjsk nnndkkd/n kksjjssooosueje jhhhsjskkdkdl kkkkkkkllffkkhkh kksjah lldldkdjkduuajjsk ',
-    //         member_type:'educator'
-    //     }
-
-    //     const data = [dd,dd,dd,dd,dd,dd,dd,dd,dd,dd,dd]
-
-    //     const icons ={
-    //         location:{uri:'https://image.flaticon.com/icons/png/512/684/684850.png'},
-    //         email:{uri:'https://image.flaticon.com/icons/png/512/580/580704.png'}, 
-    //         message:{uri:'https://image.flaticon.com/icons/png/512/893/893268.png'},   
-    //     }
+    
     const devHight = Dimensions.get('window').height;
     const devWidth = Dimensions.get('window').width;
     const viewWidth = devWidth > 600 ? 700 : devWidth
     const [report, setReport] = useState([]);
-    const [post, setPost] = useState([]);
+    const [post, setPost] = useState('');
 
 
     function renderListResult() {
         return (
-            <View>
+            <View style={tw`w-full h-full`}>
 
                 {report.map((result) => (
 
 
                     <View key={result.id} style={tw`w-11/12 flex items-center justify-center flex-wrap my-2 my-0 w-11/12`}>
                         <View style={tw`p-2 w-full rounded-l-lg rounded-r-none shadow-2xl bg-white opacity-75 mx-0 flex flex-col mt-5 `}>
-                            <View style={tw`flex flex-row`}>
+                            <View style={tw`flex flex-row h-16`}>
                                 <View style={tw`flex flex-col mx-2 items-start justify-start`}>
-                                    <Image onPress={() => { navigation.navigate('Profile', { data: result }) }} style={styles.img2} source={{ uri: 'https://image.flaticon.com/icons/png/512/3135/3135715.png' }} />
+                                    <Image onPress={() => { navigation.navigate('Profile', { data: result }) }} style={styles.img2} source={{ uri: result.interests }} />
                                 </View>
                                 <View style={tw`flex flex-col items-start justify-start`}>
                                     <Text style={tw`text-lg font-bold pt-0`}>{}</Text>
                                     <View style={tw`w-11/12`} >
                                         <ScrollView style={tw`w-11/12 mb-1`}>
-                                            <Text style={tw`w-4/5 text-blue-800 text-sm flex items-center justify-center justify-start`}> {result.post_body}</Text>
+                                            <Text style={tw`w-4/5 text-blue-800 text-sm flex items-center justify-center justify-start`}> {result.message_body}</Text>
                                         </ScrollView>
                                     </View>
                                 </View>
@@ -69,9 +51,15 @@ const HomeScreen = ({ navigation, route }) => {
 
 
     useEffect(() => {
-        get_member_data('show_post/').then(response => {
-            // console.log(response.data)
-            setReport(response.data)
+        get_member_data('show_message/').then(response => {
+            
+            const data_all = response.data
+            const result = []
+            for(let i =data_all.length-1;i>=0;i--){
+                result.push(data_all[i])
+            }
+            setReport(result)
+
         })
     }, [])
 
@@ -80,7 +68,23 @@ const HomeScreen = ({ navigation, route }) => {
     }, [report])
 
     const addPost = () => {
-        console.log(post)
+
+        const all_data = {
+            message_body: post,
+            creator_id: 27,
+            recipient_id: 27
+        }
+        sign('show_message/',all_data).then((res)=>{
+            get_member_data('show_message/').then(response => {
+                const data_all = response.data
+                const result = []
+                for(let i =data_all.length-1;i>=0;i--){
+                    result.push(data_all[i])
+                }
+                setReport(result)
+            })
+            
+        })
     }
 
     const goProfile = () => {
@@ -116,8 +120,8 @@ const HomeScreen = ({ navigation, route }) => {
                                 autoFocus
                                 type="text"
                                 value={post}
-                                multiline={true}
-                                onChangeText={addPost}
+                                multiline={true} 
+                                onChangeText={(text)=>{setPost(text)}}
                             />
                             <Button containerStyle={tw`w-4/5 rounded-md`} onPress={addPost} title="post" />
                         </View>
@@ -161,27 +165,3 @@ const styles = StyleSheet.create({
 export default HomeScreen
 
 
-// {console.log(route.params.username),console.log(route.params.pass)}
-
-{/* <View style={tw`h-1/3 w-11/12 bg-blue-300 rounded-lg flex flex-row justify-around items-center`}>
-<View style={tw`h-5/6 w-2/6 flex flex-col items-center justify-around `}>
-    <Image style={styles.img} source={{uri:"https://image.flaticon.com/icons/png/512/3135/3135715.png"}}/>
-    <View style={tw`h-1/2 w-11/12 bg-blue-200 rounded-lg flex flex-col justify-around items-center`}>
-        <Text style={styles.text} >Name:</Text>
-        <Text style={styles.text} >Hisham</Text>
-        <Text style={styles.text} >Location:</Text>
-        <Text style={styles.text} >Amman</Text>
-    </View>
-</View>
-<View style={tw`h-5/6 w-4/6 flex flex-col items-center justify-around`}>
-    <Input containerStyle={tw`w-11/12 bg-gray-100 mt-10 rounded-lg`}
-        placeholder="Post"
-        autoFocus 
-        type="text"
-        value={post}
-        multiline={true}
-        onChangeText={(text)=>{setPost(text)}}
-    />
-    <Button onPress={addPost}  title="     post     "/>
-</View>
-</View> */}
