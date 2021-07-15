@@ -93,7 +93,7 @@ const ProfileScreen = ({navigation,route}) => {
                             <Button containerStyle={tw`m-0 `} onPress={() => {navigation.navigate('Login')}} title={'Sign Out'}/>
                 </View>
             <View style={tw`w-4/5 flex items-center justify-center h-auto lg:h-screen flex-wrap mx-auto my-16 lg:my-0`}>
-            <View style={tw`w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 lg:mx-0`}>
+            <View style={tw`w-full lg:w-3/5  shadow-2xl bg-white opacity-75 lg:mx-0`}>
                 <View>
                 {Student(route.params.data)}
                 {Educator(route.params.data)}
